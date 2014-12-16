@@ -40,7 +40,7 @@ class Test(ndb.Model):
     test_content = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
 
-
+ 
 ###### ('/') - MainPage ######
 
 class MainPage(webapp2.RequestHandler):
