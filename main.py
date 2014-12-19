@@ -1,5 +1,6 @@
 import os
 import urllib
+import json
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -40,7 +41,6 @@ class Test(ndb.Model):
     test_content = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
 
- 
 ###### ('/') - MainPage ######
 
 class MainPage(webapp2.RequestHandler):
@@ -115,10 +115,19 @@ class SliderTest(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 
+class ReturnJSON(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/json'   
+        obj = {
+            'html': '<p>Hello World</p>', 
+        } 
+        self.response.out.write(json.dumps(obj))
+
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/sign', Guestbook),
     ('/submit', TestHandler),
-    ('/slider', SliderTest)
+    ('/slider', SliderTest),
+    ('/returnjson', ReturnJSON)
 ], debug=True)

@@ -6,6 +6,10 @@ body {
 	background-color: #869791;
 }
 
+a {
+	text-decoration: none;
+}
+
 .header {
 	padding: 20px;
 	background: linear-gradient(to bottom, rgba(113,110,179,1) 0%,rgba(113,110,179,1) 100%);
@@ -91,5 +95,10 @@ body {
 .owl-carousel p {
 	text-align: center;
 	color: white;
+}
+
+.firstpage-firstcolumn a:hover{
+	color: #f79532;
+	text-decoration: none;
 }
 
