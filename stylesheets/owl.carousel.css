@@ -84,6 +84,8 @@ a {
   -webkit-transform: translate3d(0,0,0);
   -moz-transform: translate3d(0,0,0);
   -ms-transform: translate3d(0,0,0);
+  text-align: center;
+  color: white;
 }
 
 .owl-carousel img {
@@ -92,13 +94,48 @@ a {
 	margin-right: auto;
 }
 
-.owl-carousel p {
-	text-align: center;
+.owl-carousel a {
 	color: white;
 }
 
-.firstpage-firstcolumn a:hover{
+.firstpage-firstcolumn-top:hover h2 {
 	color: #f79532;
 	text-decoration: none;
+	-webkit-text-stroke-width: .03px;
+  -webkit-text-stroke-color: black;
 }
 
+.firstpage-firstcolumn-bottom:hover h2 {
+	color: #f79532;
+	text-decoration: none;
+	-webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
+}
+
+.firstpage-secondcolumn-top:hover h2 {
+	color: #f79532;
+	text-decoration: none;
+	-webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
+}
+
+.firstpage-secondcolumn-bottom:hover h2 {
+	color: #f79532;
+	text-decoration: none;
+	-webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
+}
+
+.firstpage-thirdcolumn-top:hover h2 {
+	color: #f79532;
+	text-decoration: none;
+	-webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
+}
+
+.firstpage-thirdcolumn-bottom:hover h2 {
+	color: #f79532;
+	text-decoration: none;
+	-webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
+}
