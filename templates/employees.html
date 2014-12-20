@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employees</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
+</head>
+<body>
+  <div>
+    Employee Aplication
+  </div>
+  <div>
+    <h3>Enter New Employee</h>
+    <form name="Employee Info">
+        <input type="text" name="First Name" placeholder="First">
+        <input type="text" name="Last Name" placeholder="Last">
+        <input type="text" name="Job Title" placeholder="Job Title">
+        <input type="date" name="Start Date" placeholder="Start Date">
+        <input type= "submit" value="Add">
+    </form>
+    
+  </div>
+  <div>
+    Employee Table
+    <table class="table">
+    <thead>
+      <tr>
+        <th>First</th>
+        <th>Last</th>
+        <th>Job Title</th>
+        <th>Start Date</th>
+      </tr>
+    </thead>
+    {% for employee in employees %}
+      <tr>
+        <td>{{employee.first_name}}</td>
+        <td>{{employee.last_name}}</td>
+        <td>{{employee.job_title}}</td>
+        <td>{{employee.start_date}}<td>
+
+      </tr>
+
+    {% endfor %}
+    </table>
+  </div>  
+</body>
+</html>

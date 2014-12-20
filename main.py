@@ -1,6 +1,7 @@
 import os
 import urllib
 import json
+import datetime
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -40,6 +41,24 @@ class Lead(ndb.Model):
 class Test(ndb.Model):
     test_content = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
+
+class Employee(ndb.Model):
+    first_name = ndb.StringProperty()
+    last_name = ndb.StringProperty()
+    job_title = ndb.StringProperty()
+    start_date = ndb.DateProperty()
+    tenure = ndb.ComputedProperty(lambda self: datetime.date.today() - self.start_date)
+
+
+class Employees(webapp2.RequestHandler):
+    def get(self):
+        template_values = {
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('employees.html')
+        self.response.write(template.render(template_values))
+
+
 
 ###### ('/') - MainPage ######
 
@@ -94,6 +113,14 @@ class Guestbook(webapp2.RequestHandler):
         self.redirect('/?' + urllib.urlencode(query_params))
 
 
+class ReturnJSON(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'application/json'   
+        obj = {
+            'html': '<p>Hello World</p>', 
+        } 
+        self.response.out.write(json.dumps(obj))
+
 ######  ('/submit')     -   TestHandler     #######
 
 class TestHandler(webapp2.RequestHandler):
@@ -115,19 +142,11 @@ class SliderTest(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 
-class ReturnJSON(webapp2.RequestHandler):
-    def get(self):
-        self.response.headers['Content-Type'] = 'application/json'   
-        obj = {
-            'html': '<p>Hello World</p>', 
-        } 
-        self.response.out.write(json.dumps(obj))
-
-
 application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/sign', Guestbook),
     ('/submit', TestHandler),
     ('/slider', SliderTest),
-    ('/returnjson', ReturnJSON)
+    ('/returnjson', ReturnJSON),
+    ('/employees', Employees)
 ], debug=True)
