@@ -1,7 +1,8 @@
 import os
 import urllib
 import json
-import datetime
+from datetime import date
+from datetime import datetime
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -47,17 +48,38 @@ class Employee(ndb.Model):
     last_name = ndb.StringProperty()
     job_title = ndb.StringProperty()
     start_date = ndb.DateProperty()
-    tenure = ndb.ComputedProperty(lambda self: datetime.date.today() - self.start_date)
+    #tenure = ndb.ComputedProperty(lambda self: date.today() - self.start_date)
 
 
 class Employees(webapp2.RequestHandler):
     def get(self):
+        employees_query = Employee.query()
+        employees = employees_query.fetch(10)
+
         template_values = {
+            'employees': employees,
         }
 
         template = JINJA_ENVIRONMENT.get_template('employees.html')
         self.response.write(template.render(template_values))
 
+
+class AddEmployee(webapp2.RequestHandler):
+    def post(self):
+        employee = Employee()
+
+        employee.first_name = self.request.get('first_name')
+        employee.last_name = self.request.get('last_name')
+        employee.email_address = self.request.get('email_address')
+        employee.job_title = self.request.get('job_title')
+        start_date = self.request.get('start_date')
+        start_date = datetime.strptime(start_date, '%Y-%m-%d')
+        start_date = datetime.combine(start_date, datetime.min.time())
+        employee.start_date = start_date
+        print (employee)
+        employee.put()
+
+        self.redirect('/employees')
 
 
 ###### ('/') - MainPage ######
@@ -148,5 +170,6 @@ application = webapp2.WSGIApplication([
     ('/submit', TestHandler),
     ('/slider', SliderTest),
     ('/returnjson', ReturnJSON),
-    ('/employees', Employees)
+    ('/employees', Employees),
+    ('/addemployee', AddEmployee)
 ], debug=True)

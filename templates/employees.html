@@ -8,39 +8,52 @@
   <div>
     Employee Aplication
   </div>
-  <div>
+  <div name="select_add_or_updatedelete">
+    <h3>Click here to update or delete an existing employee</h3>
+    <a href="#">UPDATE EMPLOYEE</a>
+  </div>
+  <div name="add_new_employee">
     <h3>Enter New Employee</h>
-    <form name="Employee Info">
-        <input type="text" name="First Name" placeholder="First">
-        <input type="text" name="Last Name" placeholder="Last">
-        <input type="text" name="Job Title" placeholder="Job Title">
-        <input type="date" name="Start Date" placeholder="Start Date">
+    <form action="/addemployee" method="post" name="add_form">
+        <input type="text" name="first_name" placeholder="First">
+        <input type="text" name="last_name" placeholder="Last">
+        <input type="email" name="email_address" placeholder="Email">
+        <input type="text" name="job_title" placeholder="Job Title">
+        <input type="date" name="start_date" placeholder="Start Date">
         <input type= "submit" value="Add">
     </form>
-    
   </div>
-  <div>
-    Employee Table
-    <table class="table">
-    <thead>
-      <tr>
-        <th>First</th>
-        <th>Last</th>
-        <th>Job Title</th>
-        <th>Start Date</th>
-      </tr>
-    </thead>
-    {% for employee in employees %}
-      <tr>
-        <td>{{employee.first_name}}</td>
-        <td>{{employee.last_name}}</td>
-        <td>{{employee.job_title}}</td>
-        <td>{{employee.start_date}}<td>
-
-      </tr>
-
-    {% endfor %}
-    </table>
+  <div name="update_employee">
+    <h3>Update/Delete Existing Employee</h3>
+    <form action="/updateemployee" method="post" name="update_form">
+        <input type="email" name="email_address" placeholder="Email">
+        <button id="select_employee">Select Employee</button>
+    </form>
+  </div>
+  <div class="table">
+    <p>Employee Table<p>
+    <div>
+      <table class="table">
+      <thead>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>Email</th>
+          <th>Job Title</th>
+          <th>Start Date</th>
+        </tr>
+      </thead>
+      {% for employee in employees %}
+        <tr>
+          <td>{{employee.first_name}}</td>
+          <td>{{employee.last_name}}</td>
+          <td>{{employee.email_address}}</td>
+          <td>{{employee.job_title}}</td>
+          <td>{{employee.start_date}}<td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
   </div>  
 </body>
 </html>
