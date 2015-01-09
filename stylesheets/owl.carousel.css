@@ -139,3 +139,24 @@ a {
 	-webkit-text-stroke-width: .05px;
   -webkit-text-stroke-color: black;
 }
+
+.secondpage-firstcolumn-top:hover h2 {
+	color: #f79532;
+	text-decoration: none;
+	-webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
+}
+
+.secondpage-secondcolumn-top:hover h2 {
+	color: #f79532;
+	text-decoration: none;
+	-webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
+}
+
+.secondpage-thirdcolumn-top:hover h2 {
+	color: #f79532;
+	text-decoration: none;
+	-webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
+}
