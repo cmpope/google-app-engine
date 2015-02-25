@@ -163,6 +163,38 @@ class SliderTest(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('slider.html')
         self.response.write(template.render(template_values))
 
+class Cookie(webapp2.RequestHandler):
+    def get(self):
+        template_values = {
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('cookie.html')
+        self.response.write(template.render(template_values))
+
+class Blank(webapp2.RequestHandler):
+    def get(self):
+        template_values = {
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('blank.html')
+        self.response.write(template.render(template_values))
+
+class Confirmation(webapp2.RequestHandler):
+    def get(self):
+        template_values = {
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('confirmation.html')
+        self.response.write(template.render(template_values))
+
+class Rotate(webapp2.RequestHandler):
+    def get(self):
+        template_values = {
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('text-rotate.html')
+        self.response.write(template.render(template_values))
+
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
@@ -171,5 +203,9 @@ application = webapp2.WSGIApplication([
     ('/slider', SliderTest),
     ('/returnjson', ReturnJSON),
     ('/employees', Employees),
-    ('/addemployee', AddEmployee)
+    ('/addemployee', AddEmployee),
+    ('/cookie', Cookie),
+    ('/blank', Blank),
+    ('/confirmation', Confirmation),
+    ('/rotate', Rotate)
 ], debug=True)
